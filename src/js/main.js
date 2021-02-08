@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 const inputElement =document.querySelector ('.js-input');
 const buttonElement = document.querySelector ('.js-button'); 
 const inputValue = inputElement.value
-let series=[];
+let seriesList=[];
 
 // Get series from API
 function getDataFromApi() {
@@ -12,9 +12,11 @@ function getDataFromApi() {
     .then (data => {
         for (let index = 0; index < data.length; index++) {
             
-            series = data[index].show;
+            const series = data[index].show;
+            seriesList.push(series);
         }
     });
+    console.log(seriesList);
     
 }
 
