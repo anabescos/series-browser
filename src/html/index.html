@@ -10,11 +10,26 @@
   </head>
 
   <body>
-    <div class="page">
-      <include src="./partials/header.html" title="Bienvenidos a Adalab"></include>
-      <include src="./partials/main.html"></include>
-      <include src="./partials/footer.html"></include>
-    </div>
+    <main class="main">
+      <section class="section1">
+        <h1 class="sectionSearch__title"></h1>
+        <form action="post" class="sectionSearch__form">
+          <input type="text" class="sectionSearch__form--input js-input" placeholder="Escribe tu serie aquí">
+          <input type="button" class="sectionSearch__form--button js-button">
+        </form>
+      </section>
+      <section class="sectionFav">
+        <ul class="sectionFav__favList js-favList">
+
+        </ul>
+
+      </section>
+      <section class="sectionCards">
+        <ul class="sectionSeries__list js-seriesList">
+
+        </ul>
+      </section>
+    </main>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
