@@ -34,18 +34,20 @@ function renderSeries() {
     let htmlCode="";
 
     for (const eachItem of seriesList) {
-        htmlCode += "<li class='js-series'>";
+        htmlCode += `<li class='js-series'id="${eachItem.id}">`;
         htmlCode += `<h2 class='js-seriesTitle''>${eachItem.name}</h2>`;  
         const seriesImg = eachItem.image;
         console.log(seriesImg);
         if (seriesImg === null) {
-            htmlCode +=`<img src="${defaultImg}">`
+            htmlCode +=`<img class="sectionSeries__list--img" src="${defaultImg}">`
         } else {
-            htmlCode += `<img src=${seriesImg.medium}>`
+            htmlCode += `<img class="sectionSeries__list--img" src=${seriesImg.medium}>`
         }
+        htmlCode += "</li>";
     }
 
-    htmlCode += "</li>";
+    
     ulSeriesList.innerHTML= htmlCode;
 }
 
+// 
