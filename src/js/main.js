@@ -32,7 +32,7 @@ function getDataFromApi() {
 }
 buttonElement.addEventListener('click', getDataFromApi);
 
-
+// prevent the form from refreshing and sending data
 function handleForm(ev){
     ev.preventDefault();
     
@@ -40,13 +40,13 @@ function handleForm(ev){
 
 formElement.addEventListener('submit', handleForm);
 
-// paint series list
+// paint main series list
 
 
 function renderSeries() {
     const defaultImg = "../assets/images/download (1).png";
     let htmlCode="";
-
+// test whether the clicked series exists in the favourite series list
     for (const eachItem of seriesList) {
         let favClass;
         if (isFavSeries(eachItem)) {
@@ -73,7 +73,7 @@ function renderSeries() {
     ulSeriesList.innerHTML= htmlCode;
     listenToCardsEvent();
 }
-
+// test whether the clicked series exists in the favourite series list
 function isFavSeries(eachItem) {
     const favouriteFound = favouriteSeries.find(x => {
         return x.id === eachItem.id;
@@ -110,10 +110,6 @@ function handleCard(ev) {
     } else{
         favouriteSeries.splice(favData, 1);
     }
-
-    // favouriteSeries.splice(favData, 1);
-
-    
     setInLocalStorage();
     renderFavourites();
     renderSeries();
@@ -148,11 +144,13 @@ function renderFavourites() {
 // }
 // resetButton.addEventListener('click', resetButton);
 
+// set favourite series into my local storage
 function setInLocalStorage() {
     const stringfav =JSON.stringify(favouriteSeries);
     localStorage.setItem('favouriteSeries', stringfav);
 }
 
+// get information of favourite series from my local storage
 function getFromLocalStorage (){
     const localStorageFav = localStorage.getItem('favouriteSeries');
     if (localStorageFav !== null) {
