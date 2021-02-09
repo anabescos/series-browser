@@ -139,3 +139,16 @@ function renderFavourites() {
     favListElement.innerHTML= htmlCode;
 }
 
+function setInLocalStorage() {
+    const stringfav =JSON.stringify(favouriteSeries);
+    localStorage.setItem('favouriteSeries', stringfav);
+}
+
+function getFromLocalStorage (){
+    const localStorageFav = localStorage.getItem('favouriteSeries');
+    if (localStorageFav !== null) {
+        const arraySeries = JSON.parse(localStorageFav);
+        favouriteSeries = arraySeries;
+        renderFavourites();
+    }
+}
