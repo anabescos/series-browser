@@ -4,6 +4,7 @@ const inputElement =document.querySelector ('.js-input');
 const buttonElement = document.querySelector ('.js-button'); 
 const formElement = document.querySelector('.js-form');
 const ulSeriesList = document.querySelector('.js-seriesList');
+const favListElement = document.querySelector('.js-favList');
 
 let seriesList=[];
 let favouriteSeries=[];
@@ -20,6 +21,7 @@ function getDataFromApi() {
             
             const series = data[index].show;
             seriesList.push(series);
+           
             
         }
         renderSeries();
@@ -27,17 +29,11 @@ function getDataFromApi() {
     
 }
 buttonElement.addEventListener('click', getDataFromApi);
-// getDataFromApi();
 
-// function handleButton(ev) {
-//     ev.preventDefault();
-//     console.log('filtrando');
-// }
-// buttonElement.addEventListener('click', handleButton);
 
 function handleForm(ev){
     ev.preventDefault();
-    console.log('filtrando');
+    
 }
 
 formElement.addEventListener('submit', handleForm);
@@ -68,15 +64,34 @@ function renderSeries() {
     listenToCardsEvent();
 }
 
-// paint list with favourite movies
+// listen to the event on each card
 
 function listenToCardsEvent(){
 const cardElements = document.querySelectorAll('.js-series');
-    for (const card of cardElements) {
-    card.addEventListener('click', handleCard);
-    }
-}
 
-function handleCard() {
-    console.log('holi');
+    for (let card of cardElements) {
+
+    card.addEventListener('click', handleCard);
+    };
+}
+// send clicked series to favourite list array
+
+function handleCard(ev) {
+    const currentT = ev.currentTarget;
+    favouriteSeries.push(currentT.id);
+    console.log(currentT.id);
+    console.log(favouriteSeries);
+    renderFavourites();
+}
+// paint list with favourite movies
+function renderFavourites() {
+    
+    let htmlCode = "";
+    for (const eachItem of favouriteSeries) {
+        htmlCode += `<li class='js-favSeries'id="${eachItem}">${eachItem}`;
+        htmlCode += "</li>";
+         
+    }
+
+    favListElement.innerHTML= htmlCode;
 }
