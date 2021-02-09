@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Buscador de series</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="icon" href="./assets/images/favicon.png" />
   </head>
 
   <body>
     <main class="main">
-      <section class="section1">
+      <section class="sectionSearch">
         <h1 class="sectionSearch__title">Buscador de series</h1>
         <form action="" class="sectionSearch__form js-form">
           <input type="text" class="sectionSearch__form--input js-input" placeholder="Escribe tu serie aquí">
           <input type="submit" class="sectionSearch__form--button js-button"value = "Buscar">
+          <input type="button" class="sectionSearch__form--button js-button"value = "Borrar">
         </form>
       </section>
       <section class="sectionFav">
         <h3 class="sectionFav__title">Mis series favoritas</h3>
-        <ul class="sectionFav__favList js-favList">
+        <ul class="sectionFav__list js-favList">
 
         </ul>
 
       </section>
-      <section class="sectionCards">
-        <h3 class="sectionFav__title">Resultados</h3>
+      <section class="sectionSeries">
+        <h3 class="sectionSeries__title">Resultados</h3>
         <ul class="sectionSeries__list js-seriesList">
 
         </ul>
