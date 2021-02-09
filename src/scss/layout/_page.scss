@@ -5,3 +5,12 @@ body {
   background-color: $color-bg;
   font-family: $font-main;
 }
+
+.sectionFav {
+  border-bottom: 1px solid salmon;
+}
+
+.favourite {
+  background-color: salmon;
+  color: cornflowerblue;
+}
