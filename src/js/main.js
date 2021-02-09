@@ -11,6 +11,7 @@ let favouriteSeries=[];
 
 // Get series from API
 function getDataFromApi() {
+    getFromLocalStorage ();
     const inputValue = inputElement.value
    
     fetch (`http://api.tvmaze.com/search/shows?q=${inputValue}`)
@@ -90,7 +91,7 @@ function isFavSeries(eachItem) {
 function listenToCardsEvent(){
 const cardElements = document.querySelectorAll('.js-series');
 
-    for (let card of cardElements) {
+    for (const card of cardElements) {
 
     card.addEventListener('click', handleCard);
     };
@@ -152,3 +153,4 @@ function getFromLocalStorage (){
         renderFavourites();
     }
 }
+getFromLocalStorage ();
