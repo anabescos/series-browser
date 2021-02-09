@@ -5,6 +5,7 @@ const buttonElement = document.querySelector ('.js-button');
 const formElement = document.querySelector('.js-form');
 const ulSeriesList = document.querySelector('.js-seriesList');
 const favListElement = document.querySelector('.js-favList');
+const removeElement = document.querySelectorAll('.js-remove');
 
 let seriesList=[];
 let favouriteSeries=[];
@@ -125,20 +126,27 @@ function renderFavourites() {
     const defaultImg = "../assets/images/download (1).png";
 
     for (const eachItem of favouriteSeries) {
-        htmlCode += `<li class='js-series'id="${eachItem.id}">`;
-        htmlCode += `<h2 class='js-seriesTitle''>${eachItem.name}</h2>`;  
+        htmlCode += `<li class='js-fav'id="${eachItem.id}">`;
+        htmlCode += `<h2 class='js-favTitle''>${eachItem.name}</h2>`;  
         const seriesImg = eachItem.image;
         
         if (seriesImg === null) {
-            htmlCode +=`<img class="sectionSeries__list--img" src="${defaultImg}">`
+            htmlCode +=`<img class="sectionFav__list--img" src="${defaultImg}">`
         } else {
-            htmlCode += `<img class="sectionSeries__list--img" src=${seriesImg.medium}>`
+            htmlCode += `<img class="sectionFav__list--img" src=${seriesImg.medium}>`
         }
         htmlCode += "</li>";
+        htmlCode += '<button class="js-remove">X</button>';
     
     }
     favListElement.innerHTML= htmlCode;
 }
+
+// function resetButton() {
+//     // favListElement.innerHTML = "";
+//     favouriteSeries=[];
+// }
+// resetButton.addEventListener('click', resetButton);
 
 function setInLocalStorage() {
     const stringfav =JSON.stringify(favouriteSeries);

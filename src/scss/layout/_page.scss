@@ -1,16 +1,102 @@
-body {
+.main {
+  width: 100%;
   padding: 2rem;
   height: 100vh;
+  // background-color: #ffcc29;
+  display: flex;
+  flex-wrap: wrap;
   // background-image: url('../images/bg-adalab.png');
-  background-color: $color-bg;
-  font-family: $font-main;
-}
+  .sectionSearch {
+    background-color: #00af91;
+    text-align: center;
+    width: 100%;
+    height: 25vh;
+    padding-top: 30px;
+    &__title {
+      font-size: 60px;
+      font-family: "Bebas Neue", cursive;
+      color: white;
+    }
+    &__form--input {
+      width: 300px;
+      background-color: #00af91;
+      color: white;
+      border: 3px solid white;
+    }
+    &__form--button {
+      background-color: white;
+      border: 3px solid white;
+      color: #00af91;
+    }
+  }
 
-.sectionFav {
-  border-bottom: 1px solid salmon;
+  .sectionFav {
+    width: 25%;
+    background-color: salmon;
+    &__title {
+      padding-top: 20px;
+      text-align: center;
+      font-size: 32px;
+      font-family: "Bebas Neue", cursive;
+      color: white;
+    }
+    &__list {
+      text-align: center;
+      &--img {
+        height: 100px;
+        width: 80px;
+        box-shadow: 5px 5px 5px rgba(15, 15, 15, 10);
+      }
+    }
+  }
+
+  .sectionSeries {
+    background-color: #007965;
+    width: 75%;
+    &__title {
+      padding-top: 20px;
+      font-family: "Bebas Neue", cursive;
+      color: white;
+      text-align: center;
+      font-size: 45px;
+    }
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 30px;
+      &--img {
+        text-align: center;
+        box-shadow: 5px 5px 5px rgba(15, 15, 15, 10);
+        margin: 20px 30px;
+        margin-bottom: 30px;
+      }
+    }
+  }
 }
 
 .favourite {
   background-color: salmon;
-  color: cornflowerblue;
+  color: white;
+}
+
+.js-favTitle {
+  font-weight: 100;
+  font-size: 15px;
+  padding: 10px;
+  color: white;
+}
+
+.js-seriesTitle {
+  font-weight: 500;
+  padding-top: 10px;
+  text-align: center;
+}
+.js-remove {
+  cursor: pointer;
+  width: 20px;
+  background-color: #00af91;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(15, 15, 15, 10);
+  color: white;
 }
