@@ -15,6 +15,7 @@ function getDataFromApi() {
     fetch (`http://api.tvmaze.com/search/shows?q=${inputValue}`)
     .then (response => response.json())
     .then (data => {
+        seriesList = [];
         for (let index = 0; index < data.length; index++) {
             
             const series = data[index].show;
@@ -34,12 +35,12 @@ buttonElement.addEventListener('click', getDataFromApi);
 // }
 // buttonElement.addEventListener('click', handleButton);
 
-// function handleForm(ev){
-//     ev.preventDefault();
-//     console.log('filtrando');
-// }
+function handleForm(ev){
+    ev.preventDefault();
+    console.log('filtrando');
+}
 
-// formElement.addEventListener('submit', handleForm);
+formElement.addEventListener('submit', handleForm);
 
 // paint series list
 
