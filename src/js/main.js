@@ -45,7 +45,7 @@ formElement.addEventListener('submit', handleForm);
 
 
 function renderSeries() {
-    const defaultImg = "../assets/images/download (1).png";
+    const defaultImg = "./assets/images/default.png";;
     let htmlCode="";
 // test whether the clicked series exists in the favourite series list
     for (const eachItem of seriesList) {
@@ -120,7 +120,7 @@ function handleCard(ev) {
 function renderFavourites() {
     
     let htmlCode = "";
-    const defaultImg = "./assets/images/download.png";
+    const defaultImg = "./assets/images/default.png";
 
     for (const eachItem of favouriteSeries) {
         htmlCode += `<li class='js-fav'id="${eachItem.id}">`;
@@ -133,14 +133,36 @@ function renderFavourites() {
             htmlCode += `<img class="sectionFav__list--img" src=${seriesImg.medium}>`
         }
         htmlCode += "</li>";
-        htmlCode += '<button class="js-remove">X</button>';
+        htmlCode += `<button class="js-remove" id ="${eachItem.id}">X</button>`;
     
     }
     favListElement.innerHTML= htmlCode;
+    listenToRemoveButtons();
+}
+function listenToRemoveButtons() {
+    const removeButtons = document.querySelectorAll ('.js-remove');
+    
+    for (const removeButton of removeButtons) {
+        removeButton.addEventListener('click', handleRemove);
+    }
+}
+function handleRemove(ev) {
+    console.log(favouriteSeries);
+    const clickedRemoveId = parseInt(ev.currentTarget.id);
+    const favData= favouriteSeries.findIndex(series => series.id === clickedRemoveId);
+    if (favData !== -1) {
+        favouriteSeries.splice(favData,1);
+    } 
+    console.log(clickedRemoveId);
+    
+    
+    console.log(favouriteSeries);
+    renderFavourites();
+    setInLocalStorage();
+    renderSeries();
 }
 
  
-
 // set favourite series into my local storage
 function setInLocalStorage() {
     const stringfav =JSON.stringify(favouriteSeries);
