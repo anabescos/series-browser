@@ -157,6 +157,7 @@ function getFromLocalStorage (){
     }
 }
 
+// Reset button to delete favourite list 
 
 function resetButton() {
     localStorage.clear('favouriteSeries');
