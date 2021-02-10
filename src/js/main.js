@@ -7,11 +7,12 @@ const ulSeriesList = document.querySelector('.js-seriesList');
 const favListElement = document.querySelector('.js-favList');
 const resetElement = document.querySelector('.js-reset');
 
-
+// series list and favourite series list
 let seriesList=[];
 let favouriteSeries=[];
 
-// Get series from API
+// Get series from API and access the date we need
+
 function getDataFromApi() {
     getFromLocalStorage ();
     const inputValue = inputElement.value
@@ -34,6 +35,7 @@ function getDataFromApi() {
 buttonElement.addEventListener('click', getDataFromApi);
 
 // prevent the form from refreshing and sending data
+
 function handleForm(ev){
     ev.preventDefault();
     
@@ -43,19 +45,19 @@ formElement.addEventListener('submit', handleForm);
 
 // paint main series list
 
-
 function renderSeries() {
+
     const defaultImg = "./assets/images/default.png";;
     let htmlCode="";
-// test whether the clicked series exists in the favourite series list
+
+// if it is in favourites, it adds a class to the li, so I can give it a different background colour; if it is not, it does not add it.
+
     for (const eachItem of seriesList) {
         let favClass;
         if (isFavSeries(eachItem)) {
             favClass ="favourite";
-            console.log('found a favourite');
         }else{
             favClass="";
-            console.log('found a not favourite');
         }
         htmlCode += `<li class='js-series ${favClass}' id="${eachItem.id}">`;
         htmlCode += `<h2 class='js-seriesTitle''>${eachItem.name}</h2>`;  
@@ -69,26 +71,29 @@ function renderSeries() {
         htmlCode += "</li>";
         
     }
-
-    
     ulSeriesList.innerHTML= htmlCode;
     listenToCardsEvent();
 }
-// test whether the clicked series exists in the favourite series list
+
+// test if the series I receive on the parameter is in the favourite list by linking clicked "li" id in main series list to the "li" id in favourite series list
+
+
 function isFavSeries(eachItem) {
+
     const favouriteFound = favouriteSeries.find(x => {
         return x.id === eachItem.id;
     });
-    
+    // if not found with "find", it returns undefined.
+
     if (favouriteFound !== undefined) {
         return true;
     }else{
-        console.log(eachItem.id);
+        
         return false;
     } 
 }
 
-// listen to the event on each card
+// listen to the event on each card on the main series list
 
 function listenToCardsEvent(){
 const cardElements = document.querySelectorAll('.js-series');
@@ -98,7 +103,8 @@ const cardElements = document.querySelectorAll('.js-series');
     card.addEventListener('click', handleCard);
     };
 }
-// send clicked series to favourite list array
+
+// check if the clicked card (id) on the main list is in favourites array or not. If it is not, push it, if it is, remove it.
 
 function handleCard(ev) {
     const clickedSeriesId = parseInt(ev.currentTarget.id);
@@ -117,6 +123,7 @@ function handleCard(ev) {
 }
 
 // paint list with favourite movies
+
 function renderFavourites() {
     
     let htmlCode = "";
@@ -139,6 +146,7 @@ function renderFavourites() {
     favListElement.innerHTML= htmlCode;
     listenToRemoveButtons();
 }
+// listen to individual remove buttons
 function listenToRemoveButtons() {
     const removeButtons = document.querySelectorAll ('.js-remove');
     
@@ -146,6 +154,8 @@ function listenToRemoveButtons() {
         removeButton.addEventListener('click', handleRemove);
     }
 }
+// link clicked element id to id of favourite series array; then remove the clicked element
+
 function handleRemove(ev) {
     console.log(favouriteSeries);
     const clickedRemoveId = parseInt(ev.currentTarget.id);
@@ -162,14 +172,15 @@ function handleRemove(ev) {
     renderSeries();
 }
 
- 
 // set favourite series into my local storage
+
 function setInLocalStorage() {
     const stringfav =JSON.stringify(favouriteSeries);
     localStorage.setItem('favouriteSeries', stringfav);
 }
 
 // get information of favourite series from my local storage
+
 function getFromLocalStorage (){
     const localStorageFav = localStorage.getItem('favouriteSeries');
     if (localStorageFav !== null) {
