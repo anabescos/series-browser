@@ -5,7 +5,8 @@ const buttonElement = document.querySelector ('.js-button');
 const formElement = document.querySelector('.js-form');
 const ulSeriesList = document.querySelector('.js-seriesList');
 const favListElement = document.querySelector('.js-favList');
-const removeElement = document.querySelectorAll('.js-remove');
+const resetElement = document.querySelector('.js-reset');
+
 
 let seriesList=[];
 let favouriteSeries=[];
@@ -119,7 +120,7 @@ function handleCard(ev) {
 function renderFavourites() {
     
     let htmlCode = "";
-    const defaultImg = "../assets/images/download (1).png";
+    const defaultImg = "./assets/images/download.png";
 
     for (const eachItem of favouriteSeries) {
         htmlCode += `<li class='js-fav'id="${eachItem.id}">`;
@@ -138,11 +139,7 @@ function renderFavourites() {
     favListElement.innerHTML= htmlCode;
 }
 
-// function resetButton() {
-//     // favListElement.innerHTML = "";
-//     favouriteSeries=[];
-// }
-// resetButton.addEventListener('click', resetButton);
+ 
 
 // set favourite series into my local storage
 function setInLocalStorage() {
@@ -159,4 +156,13 @@ function getFromLocalStorage (){
         renderFavourites();
     }
 }
-getFromLocalStorage ();
+
+
+function resetButton() {
+    localStorage.clear('favouriteSeries');
+    favouriteSeries=[];
+    renderFavourites();
+ }
+ resetElement.addEventListener('click', resetButton);
+ 
+ getFromLocalStorage ();

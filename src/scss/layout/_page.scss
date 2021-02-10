@@ -1,17 +1,17 @@
 .main {
   width: 100%;
-  padding: 2rem;
   height: 100vh;
-  // background-color: #ffcc29;
+  background-color: #00af91;
   display: flex;
   flex-wrap: wrap;
-  // background-image: url('../images/bg-adalab.png');
+
   .sectionSearch {
     background-color: #00af91;
     text-align: center;
     width: 100%;
-    height: 25vh;
-    padding-top: 30px;
+    height: 500px;
+    padding-top: 150px;
+    // padding-bottom: 30px;
     &__title {
       font-size: 60px;
       font-family: "Bebas Neue", cursive;
@@ -35,6 +35,9 @@
   .sectionFav {
     width: 25%;
     background-color: salmon;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     &__title {
       padding-top: 20px;
       text-align: center;
@@ -49,6 +52,9 @@
         width: 80px;
         box-shadow: 5px 5px 5px rgba(15, 15, 15, 10);
       }
+    }
+    &__button {
+      justify-content: center;
     }
   }
 
@@ -99,6 +105,17 @@
   background-color: #00af91;
   border: 0;
   border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(15, 15, 15, 10);
+  color: white;
+}
+.js-reset {
+  cursor: pointer;
+  text-align: center;
+  width: 50px;
+  height: 30px;
+  background-color: #00af91;
+  border: 0;
+  border-radius: 20%;
   box-shadow: 5px 5px 5px rgba(15, 15, 15, 10);
   color: white;
 }
