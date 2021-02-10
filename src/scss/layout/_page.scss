@@ -18,11 +18,13 @@
       color: white;
     }
     &__form--input {
-      width: 300px;
+      width: 350px;
+      height: 30px;
       background-color: #00af91;
       color: white;
       border: 3px solid white;
       cursor: pointer;
+      border-radius: 6px;
     }
     &__form--button {
       background-color: white;
@@ -38,8 +40,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     &__title {
-      padding-top: 20px;
+      padding: 20px 0 2px;
       text-align: center;
       font-size: 32px;
       font-family: "Bebas Neue", cursive;
